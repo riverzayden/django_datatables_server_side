@@ -2,6 +2,7 @@
 from django.db import models
 from django.db.models import Q
 from model_utils import Choices
+from django.urls import reverse
 
 ORDER_COLUMN_CHOICES = Choices(
     ('0', 'id'),
@@ -16,6 +17,7 @@ ORDER_COLUMN_CHOICES = Choices(
 class Music(models.Model):
     song = models.TextField()  # blank=False
     singer = models.TextField()  # blank=False
+    place = models.TextField()  # blank=False
 
     # setting auto_now or auto_now_add to True will cause the field to have editable=False and blank=True set.
     last_modify_date = models.DateTimeField(auto_now=True, null=True)
@@ -23,6 +25,9 @@ class Music(models.Model):
 
     class Meta:
         db_table = "music"
+    
+    def get_absolute_url(self):
+        return reverse('musics:root')
 
 
 def query_musics_by_args(**kwargs):

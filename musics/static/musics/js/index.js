@@ -71,6 +71,7 @@ let table = $('#datatables').DataTable({
         {"data": "singer"},
         {"data": "last_modify_date"},
         {"data": "created"},
+        {"data": "place"},
         {
             "data": null,
             "defaultContent": '<button type="button" class="btn btn-info">Edit</button>' + '&nbsp;&nbsp' +
@@ -273,6 +274,7 @@ $('#datatables tbody').on('click', 'button', function () {
         // EDIT button
         $('#song').val(data['song']);
         $('#singer').val(data['singer']);
+        $('#place').val(data['place']);
         $('#type').val('edit');
         $('#modal_title').text('EDIT');
         $("#myModal").modal();

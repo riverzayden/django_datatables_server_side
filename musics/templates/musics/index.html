@@ -17,6 +17,7 @@
     <div class="text">
         <button type="button" data-dismiss="modal" class="btn btn-primary" id="new">New</button>
         <button type="button" name="refresh" id="refresh" class="btn btn-default">Refresh</button>
+        <a href="{% url "musics:musics_new" %}" class="btn btn-primary">생성하기</a>
         <div id="test1" style="float:right">  </div>
     </div>
     <br/>
@@ -52,6 +53,7 @@
             <th>singer</th>
             <th>last_modify_date</th>
             <th>created</th>
+            <th>place</th>
             <th>action</th>
         </tr>
         </thead>
@@ -82,6 +84,11 @@
                         <input type="text" class="form-control" id="singer" name="singer"
                                placeholder="Enter Singer" required="true">
                     </div>
+                    <div class="form-group">
+                            <label for="place"><span class="glyphicon glyphicon-file"></span> place</label>
+                            <input type="text" class="form-control" id="place" name="place"
+                                   placeholder="Enter place" required="true">
+                        </div>
                     {% csrf_token %} 
                     <input type="hidden" id="type" name="type" value="">
                     <button type="submit" class="btn btn-success btn-block"><span

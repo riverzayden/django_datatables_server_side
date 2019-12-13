@@ -40,3 +40,16 @@ class MusicViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response(str(e), status=status.HTTP_404_NOT_FOUND, template_name=None, content_type=None)
 
+from django.views.generic import CreateView
+from .forms import MusicsForm
+class MusicsCreateView(CreateView):
+    model = Music
+    form_class = MusicsForm
+    template_name = 'musics/musics_form.html'
+
+    def form_valid(self, form):
+        res = super().form_valid(form)
+        # messages.success(self.request, '새 글을 저장했습니다.')
+        return res
+
+musics_new = MusicsCreateView.as_view()

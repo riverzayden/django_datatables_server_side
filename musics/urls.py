@@ -11,6 +11,7 @@ router.register(r'list', views.MusicViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('', views.index),
+    path('new/', views.musics_new, name='musics_new'),
+    path('', views.index,name='root'),
 ]
 
