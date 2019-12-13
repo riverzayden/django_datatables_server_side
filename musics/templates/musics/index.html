@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django-DRF Demo</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'musics/css/bootstrap.min.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'musics/css/jquery.dataTables.css' %}" type="text/css"/>
+</head>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Django-DRF Demo</h1>
+        <p>dataTable Example (server-side)</p>
+    </div>
+
+    <!-- New  button -->
+    <div class="text">
+        <button type="button" data-dismiss="modal" class="btn btn-primary" id="new">New</button>
+        <button type="button" name="refresh" id="refresh" class="btn btn-default">Refresh</button>
+        <div id="test1" style="float:right">  </div>
+    </div>
+    <br/>
+
+
+    <div id="test1" style="float:right">
+        </div>
+
+    {% load widget_tweaks %}
+      <div class="well">
+        <h4 style="margin-top: 0">Filter</h4>
+        <div class="row">
+          <div class="form-group col-sm-4 col-md-3">
+            <h4 style="margin-top: 0">song</h4>
+            <input type="text" name="song2" id="song2" class="form-control" />
+          </div>
+          <div class="form-group col-sm-4 col-md-3">
+                <h4 style="margin-top: 0">singer</h4>
+            <input type="text" name="singer2" id="singer2" class="form-control"  />
+          </div>
+        </div>
+        <button type="button" name="filter" id="filter" class="btn btn-primary">Filter</button>
+        </button>
+      </div>
+
+
+    <!-- datatables -->
+    <table id="datatables" class="table table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>song</th>
+            <th>singer</th>
+            <th>last_modify_date</th>
+            <th>created</th>
+            <th>action</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+
+        </tr>
+        </tfoot>
+    </table>
+    
+   <!-- NEW and EDIT Modal -->
+   <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal_title"></h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="song"><span class="glyphicon glyphicon-pencil"></span> Song</label>
+                        <input type="text" class="form-control" id="song" name="song" placeholder="Enter Song"
+                               required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="singer"><span class="glyphicon glyphicon-file"></span> Singer</label>
+                        <input type="text" class="form-control" id="singer" name="singer"
+                               placeholder="Enter Singer" required="true">
+                    </div>
+                    {% csrf_token %} 
+                    <input type="hidden" id="type" name="type" value="">
+                    <button type="submit" class="btn btn-success btn-block"><span
+                            class="glyphicon glyphicon-ok"></span> OK
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="confirm" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure?</h4>
+            </div>
+            <div class="modal-body">
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
+                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>       
+</div>
+
+<body>
+
+                
+
+
+<script src="{% static 'musics/js/jquery.min.js' %}"></script>
+<script src="{% static 'musics/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'musics/js/jquery.dataTables.js' %}"></script>
+<script src="//cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>
+<script src="{% static 'musics/js/index.js' %}"></script>
+
+</body>
+</html>
